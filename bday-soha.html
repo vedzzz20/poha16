@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Happy 16th Birthday, Poha 🌹</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --crimson: #CA2851;
+    --rose: #FF6766;
+    --peach: #FFB173;
+    --cream: #FFE3B3;
+    --dark: #0e1218;
+    --mid: #1a1f2e;
+    --blue: #7fa8c9;
+    --blue-dim: rgba(127,168,201,0.12);
+    --blue-line: rgba(127,168,201,0.3);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--dark);
+    color: var(--cream);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4rem 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 50%; transform: translateX(-50%);
+    width: 1px; height: 80px;
+    background: linear-gradient(to bottom, var(--crimson), transparent);
+  }
+
+  .eyebrow {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--rose);
+    opacity: 0.8;
+    margin-bottom: 2.5rem;
+    animation: fadeUp 1s ease both;
+  }
+
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(5rem, 18vw, 13rem);
+    font-weight: 300;
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, var(--cream) 0%, var(--peach) 40%, var(--rose) 80%, var(--crimson) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: fadeUp 1s 0.15s ease both;
+  }
+
+  .hero-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    font-weight: 300;
+    color: var(--peach);
+    opacity: 0.75;
+    margin-top: 1.5rem;
+    animation: fadeUp 1s 0.3s ease both;
+  }
+
+  .enter-btn {
+    margin-top: 3.5rem;
+    padding: 0.75rem 2.5rem;
+    border: 1px solid rgba(202,40,81,0.4);
+    background: transparent;
+    color: var(--cream);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: border-color 0.3s, background 0.3s;
+    animation: fadeUp 1s 0.45s ease both;
+  }
+  .enter-btn:hover { border-color: var(--crimson); background: rgba(202,40,81,0.08); }
+
+  /* ── SECTIONS ── */
+  section {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+    border-top: 1px solid rgba(202,40,81,0.12);
+  }
+
+  .section-num {
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--crimson);
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 7vw, 3.8rem);
+    font-weight: 300;
+    line-height: 1.05;
+    margin-bottom: 1.8rem;
+    color: var(--cream);
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--peach);
+  }
+
+  .section-body {
+    font-size: 1rem;
+    line-height: 1.85;
+    color: rgba(255,227,179,0.65);
+    max-width: 520px;
+  }
+
+  /* ── QUOTE BLOCK ── */
+  .quote-block {
+    margin: 2.5rem 0;
+    padding-left: 1.5rem;
+    border-left: 2px solid var(--crimson);
+  }
+
+  .quote-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: var(--peach);
+  }
+
+  .quote-attr {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,178,115,0.45);
+    margin-top: 0.6rem;
+  }
+
+  .border-blue {
+    border-top: 1px solid rgba(127,168,201,0.15) !important;
+  }
+
+  .quote-block.blue {
+    border-left: 2px solid var(--blue);
+  }
+
+  .quote-block.blue .quote-text {
+    color: var(--blue);
+  }
+
+  .poem {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    line-height: 2.2;
+    color: rgba(127,168,201,0.7);
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: var(--blue-dim);
+    border-radius: 2px;
+  }
+
+  /* ── CLOSING ── */
+  .closing {
+    text-align: center;
+    padding: 8rem 2rem 6rem;
+    border-top: 1px solid rgba(202,40,81,0.12);
+    position: relative;
+    z-index: 1;
+  }
+
+  .closing-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 300;
+    color: var(--cream);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+
+  .closing-msg {
+    font-size: 0.95rem;
+    line-height: 1.9;
+    color: rgba(255,227,179,0.6);
+    max-width: 480px;
+    margin: 0 auto 2.5rem;
+  }
+
+  .sign-off {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--rose);
+    opacity: 0.75;
+  }
+
+  /* ── ORNAMENT ── */
+  .ornament {
+    text-align: center;
+    margin: 1.5rem 0;
+    font-size: 0.8rem;
+    letter-spacing: 0.5em;
+    color: rgba(202,40,81,0.35);
+  }
+
+  /* ── GRADIENT GLOW (decorative) ── */
+  .glow {
+    position: fixed;
+    pointer-events: none;
+    z-index: 0;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.07;
+  }
+  .glow-1 { width: 600px; height: 600px; background: var(--crimson); top: -200px; left: -200px; }
+  .glow-2 { width: 400px; height: 400px; background: var(--peach); bottom: 10%; right: -150px; }
+  .glow-3 { width: 500px; height: 500px; background: var(--blue); top: 40%; left: -180px; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<div class="glow glow-1"></div>
+<div class="glow glow-2"></div>
+<div class="glow glow-3"></div>
+
+<!-- HERO -->
+<div class="hero">
+  <p class="eyebrow">Sweet Sixteen &nbsp;·&nbsp; A Letter to</p>
+  <h1 class="hero-name">Poha</h1>
+  <p class="hero-sub">the crazy vampire abbreviator, in all her <span style="color: var(--blue); font-style: italic;">glory</span></p>
+  <a href="#begin" class="enter-btn">Enter ↓</a>
+</div>
+
+<!-- SECTION 1 — BOOKS -->
+<section id="begin">
+  <p class="section-num reveal">01 &nbsp;—&nbsp; The Reader</p>
+  <h2 class="section-title reveal">Between the <em>pages,</em> she lives.</h2>
+  <p class="section-body reveal">
+    i genuinely don't know anyone who reads the way you do. like it's not even a hobby for you,
+    it's just where you go. the Powerless series, the Inheritance Games —
+    you find the ones that actually hurt and then act surprised when they hurt.
+  </p>
+  <div class="quote-block reveal">
+    <p class="quote-text">"A reader lives a thousand lives before she dies. The girl who never reads lives only one."</p>
+    <p class="quote-attr">— George R.R. Martin</p>
+  </div>
+  <p class="section-body reveal">
+    every 2am "okay one more chapter" that was never just one more chapter —
+    that's you. and i think that's one of my favourite things about you.
+  </p>
+</section>
+
+<!-- SECTION 2 — ART & AESTHETIC -->
+<section class="border-blue">
+  <p class="section-num reveal">02 &nbsp;—&nbsp; The Artist's Eye</p>
+  <h2 class="section-title reveal">She notices <em style="color: var(--blue);">everything.</em></h2>
+  <p class="section-body reveal">
+    you just get it. like i'll send something totally normal and you clock exactly what i actually meant.
+    no one taught you that, you just do it. it's a little scary honestly.
+  </p>
+  <div class="ornament reveal">✦ &nbsp; ✦ &nbsp; ✦</div>
+  <div class="poem reveal">
+    you collect beauty like it's your job —<br>
+    a colour here, a texture there,<br>
+    making a whole world out of things<br>
+    most people just walk past.
+  </div>
+  <p class="section-body reveal">
+    please never stop noticing things. it's genuinely one of the best things about you.
+  </p>
+</section>
+
+<!-- SECTION 3 — WHO SHE IS -->
+<section>
+  <p class="section-num reveal">03 &nbsp;—&nbsp; Poha</p>
+  <h2 class="section-title reveal">The one and <em>only.</em></h2>
+  <p class="section-body reveal">
+    okay so. Poha. where do i even start.
+    you are the most clueless person i have ever met — well, not met met, but you know what i mean —
+    and i mean that in the most loving way possible.
+    somehow you're always confused about what's happening and somehow it's always the funniest thing.
+    i don't know how you do it but you make my day lighter from across a screen,
+    and that's honestly kind of insane if you think about it.
+    we've never even been in the same room and you still somehow fix my mood every time.
+  </p>
+  <div class="quote-block reveal">
+    <p class="quote-text">"And He found you lost and guided you."</p>
+    <p class="quote-attr">— Surah Ad-Duha, 93:7</p>
+  </div>
+  <p class="section-body reveal">
+    you're grounded in a way i really admire. your faith is such a quiet, steady part of you —
+    it just sits there, holding you together, and i think it's beautiful.
+  </p>
+  <p class="section-body reveal" style="margin-top: 1.2rem;">
+    sixteen looks so good on you. like genuinely, this is your era.
+  </p>
+</section>
+
+<!-- SECTION 4 — TYPOS -->
+<section>
+  <p class="section-num reveal">04 &nbsp;—&nbsp; the translator</p>
+  <h2 class="section-title reveal">she just <em>knows.</em></h2>
+  <p class="section-body reveal">
+    okay so i type like my keyboard is actively fighting me. always have, probably always will.
+    and somehow — somehow — you just get it every time. no "wait what did you mean",
+    no confusion, just a reply like you received a perfectly normal message.
+    which. you did not. but you understood it anyway.
+  </p>
+  <p class="section-body reveal" style="margin-top: 1.2rem;">
+    that's actually so rare and i don't think i say that enough.
+  </p>
+</section>
+
+<!-- SECTION 5 — THINGS I LOVE -->
+<section class="border-blue">
+  <p class="section-num reveal">05 &nbsp;—&nbsp; things i love about you</p>
+  <h2 class="section-title reveal">honestly? <em>everything.</em></h2>
+  <p class="section-body reveal">
+    your attitude. the way you say things and they just land perfectly.
+    your wit — like you're funny in a way that feels effortless,
+    the kind where i don't even see it coming and then i'm just gone.
+  </p>
+  <p class="section-body reveal" style="margin-top: 1.2rem;">
+    but also just. all of it. the whole thing.
+    the way you are, the way you show up, the way talking to you just feels easy.
+    i could make a list and it still wouldn't cover it so i'll just say —
+    everything. genuinely everything.
+  </p>
+</section>
+
+<!-- CLOSING -->
+<div class="closing">
+  <p class="section-num reveal" style="text-align:center;">and finally —</p>
+  <h2 class="closing-title reveal">Happy Sweet Sixteen,<br><em>Soha Falaq.</em></h2>
+
+  <p class="closing-msg reveal" style="margin-top: 2rem;">
+    okay POHA. poha. the crazy vampire abbreviator. my online bestie who has never once
+    been confused about what i was trying to say even when i was typing with what i can only
+    assume was my elbow. sixteen years of you existing on this planet and the world is genuinely
+    better for it, i hope you know that.
+  </p>
+
+  <p class="closing-msg reveal">
+    you're funny without trying. you're sharp in a way that sneaks up on you.
+    you read books that hurt on purpose and you have taste in everything and
+    you just GET things — people, tones, vibes — in a way most people never figure out.
+    and you do all of this from across a screen, which is honestly unfair.
+  </p>
+
+  <p class="closing-msg reveal">
+    i'm really glad we found each other in whatever corner of the internet this happened in.
+    one day we're going to actually meet and i genuinely don't know what we're going to do
+    because i feel like the universe might not be able to handle it.
+  </p>
+
+  <p class="closing-msg reveal">
+    may Allah keep you so so safe. may this year give you everything you deserve —
+    which is a lot, by the way. more books, more beautiful things, more moments where
+    you're inexplicably confused about something and it's the highlight of my day.
+  </p>
+
+  <p class="closing-msg reveal">
+    you say you dont want to celebrate, you say you dont want gifts or shit,
+    but remember to never say never my dear, and never forget us <3
+  </p>
+
+  <div class="ornament reveal" style="font-size: 1rem; margin: 3rem 0;">✦ &nbsp; &nbsp; ✦ &nbsp; &nbsp; ✦</div>
+
+  <p style="font-family: 'Cormorant Garamond', serif; font-size: clamp(1.1rem, 3vw, 1.4rem); color: rgba(255,227,179,0.5); letter-spacing: 0.05em; margin-bottom: 0.75rem;" class="reveal">
+    with every bit of love i have —
+  </p>
+  <p class="sign-off reveal" style="font-size: clamp(1.4rem, 4vw, 2rem); opacity: 1;">
+    your little Vedanti 🌹
+  </p>
+  <p style="font-family: 'Jost', sans-serif; font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(202,40,81,0.4); margin-top: 1rem;" class="reveal">
+    ilysfm • don't you dare abbreviate that
+  </p>
+</div>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+  });
+}, { threshold: 0.15 });
+reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
